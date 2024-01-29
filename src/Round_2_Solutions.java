@@ -598,18 +598,311 @@ class CharacterFrequency {
 
 //******************************************************---****************************************************************
 
-//  7.
+//  7. Problem Description: Find the Average of Elements in an Array
+
+//You are tasked with creating a Java program to find the average of elements in an array.
+// The program should efficiently calculate and return the average of all elements present in the array.
+
+//Input:
+//    nums: An array of integers.
+
+//Output:
+//    Returns the average of all elements in the array.
+
+
+// Example 1
+//int[] arr1 = {1, 2, 3, 4, 5};
+//double result1 = findAverage(arr1);
+// Output: 3.0 (The average of elements 1, 2, 3, 4, 5 is (1 + 2 + 3 + 4 + 5) / 5 = 3.0)
+
+// Example 2
+//int[] arr2 = {10, 20, 30, 40, 50};
+//double result2 = findAverage(arr2);
+// Output: 30.0 (The average of elements 10, 20, 30, 40, 50 is (10 + 20 + 30 + 40 + 50) / 5 = 30.0)
+
+class AverageOfElements {
+
+    public static double findAverage(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("Array should contain at least one element.");
+        }
+
+        int sum = 0;
+
+        for (int num : nums) {
+            sum += num;
+        }
+
+        return (double) sum / nums.length;
+    }
+
+    public static void main(String[] args) {
+        // Test Case 1
+        int[] arr1 = {1, 2, 3, 4, 5};
+        double result1 = findAverage(arr1);
+        System.out.println("Test Case 1: Average of Elements = " + result1);
+
+        // Test Case 2
+        int[] arr2 = {10, 20, 30, 40, 50};
+        double result2 = findAverage(arr2);
+        System.out.println("Test Case 2: Average of Elements = " + result2);
+
+        // Test Case 3
+        int[] arr3 = {5};
+        double result3 = findAverage(arr3);
+        System.out.println("Test Case 3: Average of Elements = " + result3);
+
+        // Test Case 4
+        int[] arr4 = {-1, 0, 1};
+        double result4 = findAverage(arr4);
+        System.out.println("Test Case 4: Average of Elements = " + result4);
+
+        // Test Case 5
+        int[] arr5 = {2, 4, 6, 8, 10};
+        double result5 = findAverage(arr5);
+        System.out.println("Test Case 5: Average of Elements = " + result5);
+    }
+}
+
+// sample output:
+// Test Case 1: Average of Elements = 3.0
+//Test Case 2: Average of Elements = 30.0
+//Test Case 3: Average of Elements = 5.0
+//Test Case 4: Average of Elements = 0.0
+//Test Case 5: Average of Elements = 6.0
+
+
 
 //******************************************************---****************************************************************
 
-//  8.
+//  8. Problem Description: Count Even and Odd Numbers in an Array
+
+//You are tasked with creating a Java program to count the number of even and odd numbers in an array.
+// The program should efficiently determine and return the count of even and odd numbers present in the array.
+
+//Input:
+//    nums: An array of integers.
+
+//Output:
+//    Returns an array where the first element is the count of even numbers, and the second element is the count of odd numbers.
+
+// Example
+//    int[] arr = {2, 5, 8, 3, 6, 7};
+//    int[] result = countEvenOddNumbers(arr);
+// Output: [3, 3] (There are 3 even numbers {2, 8, 6} and 3 odd numbers {5, 3, 7})
+
+
+class CountEvenOddNumbers {
+
+    public static int[] countEvenOddNumbers(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("Array should contain at least one element.");
+        }
+
+        int evenCount = 0;
+        int oddCount = 0;
+
+        for (int num : nums) {
+            if (num % 2 == 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+            }
+        }
+
+        return new int[]{evenCount, oddCount};
+    }
+
+    public static void main(String[] args) {
+        // Test Case 1
+        int[] arr1 = {2, 5, 8, 3, 6, 7};
+        int[] result1 = countEvenOddNumbers(arr1);
+        System.out.println("Test Case 1: Even Count = " + result1[0] + ", Odd Count = " + result1[1]);
+
+        // Test Case 2
+        int[] arr2 = {10, 20, 30, 40, 50};
+        int[] result2 = countEvenOddNumbers(arr2);
+        System.out.println("Test Case 2: Even Count = " + result2[0] + ", Odd Count = " + result2[1]);
+
+        // Test Case 3
+        int[] arr3 = {7};
+        int[] result3 = countEvenOddNumbers(arr3);
+        System.out.println("Test Case 3: Even Count = " + result3[0] + ", Odd Count = " + result3[1]);
+
+        // Test Case 4
+        int[] arr4 = {-1, 0, 1};
+        int[] result4 = countEvenOddNumbers(arr4);
+        System.out.println("Test Case 4: Even Count = " + result4[0] + ", Odd Count = " + result4[1]);
+
+        // Test Case 5
+        int[] arr5 = {2, 4, 6, 8, 10};
+        int[] result5 = countEvenOddNumbers(arr5);
+        System.out.println("Test Case 5: Even Count = " + result5[0] + ", Odd Count = " + result5[1]);
+    }
+}
+
+// sample output:
+//Test Case 1: Even Count = 3, Odd Count = 3
+//Test Case 2: Even Count = 5, Odd Count = 0
+//Test Case 3: Even Count = 0, Odd Count = 1
+//Test Case 4: Even Count = 1, Odd Count = 2
+//Test Case 5: Even Count = 5, Odd Count = 0
+
 
 //******************************************************---****************************************************************
 
-//  9.
+//  9. Problem Description: Find the Maximum of Three Numbers
+
+//You are tasked with creating a Java program to find the maximum of three numbers.
+// The program should efficiently determine and return the largest value among the three input numbers.
+
+//Input:
+//    num1, num2, and num3: Three integers.
+
+//Output:
+//    Returns the maximum value among the three input numbers.
+
+// Example
+//int result = findMaximum(5, 12, 8);
+// Output: 12 (Among the numbers 5, 12, and 8, 12 is the largest)
+
+//Notes:
+//    The solution should efficiently find and return the maximum value among the three input numbers.
+//    The function should handle integer inputs.
+//    The program should run without errors for valid input numbers.
+
+
+class FindMaximum {
+
+    public static int findMaximum(int num1, int num2, int num3) {
+        int max = num1;
+
+        if (num2 > max) {
+            max = num2;
+        }
+
+        if (num3 > max) {
+            max = num3;
+        }
+
+        return max;
+    }
+
+    public static void main(String[] args) {
+        // Test Case 1
+        int result1 = findMaximum(5, 12, 8);
+        System.out.println("Test Case 1: Maximum = " + result1);
+
+        // Test Case 2
+        int result2 = findMaximum(20, 15, 25);
+        System.out.println("Test Case 2: Maximum = " + result2);
+
+        // Test Case 3
+        int result3 = findMaximum(10, 10, 10);
+        System.out.println("Test Case 3: Maximum = " + result3);
+
+        // Test Case 4
+        int result4 = findMaximum(-5, -2, -8);
+        System.out.println("Test Case 4: Maximum = " + result4);
+
+        // Test Case 5
+        int result5 = findMaximum(0, 0, 0);
+        System.out.println("Test Case 5: Maximum = " + result5);
+    }
+}
+
+// sample output:
+// Test Case 1: Maximum = 12
+//Test Case 2: Maximum = 25
+//Test Case 3: Maximum = 10
+//Test Case 4: Maximum = -2
+//Test Case 5: Maximum = 0
 
 //******************************************************---****************************************************************
 
+//  10. Problem Description: Difference Between Sum of Even and Odd-Indexed Elements
+//
+//You are tasked with creating a Java program to find the difference between the sum of even-indexed elements and odd-indexed elements in an array.
+// The program should efficiently calculate and return the absolute difference between the sums of elements at even and odd indices in the array.
+//Input:
+//    nums: An array of integers.
 
+//Output:
+//    Returns the absolute difference between the sum of even-indexed elements and odd-indexed elements in the array.
 
+// Example 1
+//int[] arr1 = {1, 2, 3, 4, 5};
+//int result1 = differenceBetweenSums(arr1);
+// Output: 3 (Sum of even-indexed elements: 1 + 3 + 5 = 9, Sum of odd-indexed elements: 2 + 4 = 6, Difference = |9 - 6| = 3)
 
+// Example 2
+//int[] arr2 = {10, 20, 30, 40, 50, 60};
+//int result2 = differenceBetweenSums(arr2);
+// Output: 60 (Sum of even-indexed elements: 10 + 30 + 50 = 90, Sum of odd-indexed elements: 20 + 40 + 60 = 120, Difference = |90 - 120| = 30)
+
+//Notes:
+//    The solution should efficiently find and calculate the difference between the sum of even-indexed elements and odd-indexed elements in the array.
+//    The function should consider arrays of varying sizes and handle cases where the array may not have both even and odd indices.
+//    The program should run without errors for valid input arrays.
+
+class DifferenceBetweenSums {
+
+    public static int differenceBetweenSums(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            throw new IllegalArgumentException("Array should contain at least two elements.");
+        }
+
+        int sumEven = 0;
+        int sumOdd = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (i % 2 == 0) {
+                sumEven += nums[i];
+            } else {
+                sumOdd += nums[i];
+            }
+        }
+
+        return Math.abs(sumEven - sumOdd);
+    }
+
+    public static void main(String[] args) {
+        // Test Case 1
+        int[] arr1 = {1, 2, 3, 4, 5};
+        int result1 = differenceBetweenSums(arr1);
+        System.out.println("Test Case 1: Difference Between Sums = " + result1);
+
+        // Test Case 2
+        int[] arr2 = {10, 20, 30, 40, 50, 60};
+        int result2 = differenceBetweenSums(arr2);
+        System.out.println("Test Case 2: Difference Between Sums = " + result2);
+
+        // Test Case 3
+        int[] arr3 = {5};
+        try {
+            int result3 = differenceBetweenSums(arr3);
+            System.out.println("Test Case 3: Difference Between Sums = " + result3);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Test Case 3: " + e.getMessage());
+        }
+
+        // Test Case 4
+        int[] arr4 = {2, 4};
+        int result4 = differenceBetweenSums(arr4);
+        System.out.println("Test Case 4: Difference Between Sums = " + result4);
+
+        // Test Case 5
+        int[] arr5 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int result5 = differenceBetweenSums(arr5);
+        System.out.println("Test Case 5: Difference Between Sums = " + result5);
+    }
+}
+
+// sample output:
+// Test Case 1: Difference Between Sums = 3
+//Test Case 2: Difference Between Sums = 30
+//Test Case 3: Array should contain at least two elements.
+//Test Case 4: Difference Between Sums = 2
+//Test Case 5: Difference Between Sums = 5
+
+//******************************************************---****************************************************************
