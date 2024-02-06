@@ -79,18 +79,32 @@ class TwoSum {
 //******************************************************---****************************************************************
 
 
-//  2. Problem Description: Count Vowels in a String
+//  2. Problem Description: Count Vowels and Consonants in a String
 
-//You are tasked with creating a Java program to count the number of vowels in a given string.
-// Vowels are defined as the letters 'a', 'e', 'i', 'o', and 'u', and the program should be case-insensitive.
-// The goal is to provide a robust solution that efficiently determines the count of vowels in any given input string.
+//You are tasked with creating a Java program to count the number of vowels and consonants in a given string.
+// Vowels are defined as the letters 'a', 'e', 'i', 'o', and 'u', while consonants are all other alphabetic characters.
+// The program should be case-insensitive, meaning it should treat uppercase and lowercase letters as equivalent.
 
-//Returns an integer representing the count of vowels in the input string.
+//        Input:
+//        str: A string containing alphabetic characters (both uppercase and lowercase).
 
-class CountVowels {
+//        Output:
+//        Prints the number of vowels and consonants in the input string.
 
-    public static int countVowels(String str) {
-        int count = 0;
+
+// Example
+//    String str = "Hello World";
+//  System.out.println("Test Case:");
+//        countVowelsAndConsonants(str);
+// Output:
+// Number of vowels = 3
+// Number of consonants = 7
+
+class CountVowelsAndConsonants {
+
+    public static void countVowelsAndConsonants(String str) {
+        int vowelCount = 0;
+        int consonantCount = 0;
         str = str.toLowerCase(); // Convert the string to lowercase for case-insensitivity
 
         for (int i = 0; i < str.length(); i++) {
@@ -98,47 +112,82 @@ class CountVowels {
 
             // Check if the character is a vowel
             if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
-                count++;
+                vowelCount++;
+            }
+            // Check if the character is a consonant
+            else if ((ch >= 'a' && ch <= 'z')) {
+                consonantCount++;
             }
         }
 
-        return count;
+        System.out.println("Number of vowels = " + vowelCount);
+        System.out.println("Number of consonants = " + consonantCount);
     }
 
     public static void main(String[] args) {
         // Test Case 1
         String str1 = "Hello World";
-        System.out.println("Test Case 1: Number of vowels = " + countVowels(str1));
+        System.out.println("Test Case 1:");
+        countVowelsAndConsonants(str1);
+        System.out.println();
 
         // Test Case 2
         String str2 = "Programming is Fun";
-        System.out.println("Test Case 2: Number of vowels = " + countVowels(str2));
+        System.out.println("Test Case 2:");
+        countVowelsAndConsonants(str2);
+        System.out.println();
 
         // Test Case 3
         String str3 = "Java";
-        System.out.println("Test Case 3: Number of vowels = " + countVowels(str3));
+        System.out.println("Test Case 3:");
+        countVowelsAndConsonants(str3);
+        System.out.println();
 
         // Test Case 4
         String str4 = "Python";
-        System.out.println("Test Case 4: Number of vowels = " + countVowels(str4));
+        System.out.println("Test Case 4:");
+        countVowelsAndConsonants(str4);
+        System.out.println();
 
         // Test Case 5
         String str5 = "The quick brown fox jumps over the lazy dog";
-        System.out.println("Test Case 5: Number of vowels = " + countVowels(str5));
+        System.out.println("Test Case 5:");
+        countVowelsAndConsonants(str5);
+        System.out.println();
 
         // Test Case 6 (Empty String)
         String str6 = "";
-        System.out.println("Test Case 6: Number of vowels = " + countVowels(str6));
+        System.out.println("Test Case 6:");
+        countVowelsAndConsonants(str6);
+        System.out.println();
     }
 }
 
+
 // sample output:
-//          Test Case 1: Number of vowels = 3
-//        Test Case 2: Number of vowels = 5
-//        Test Case 3: Number of vowels = 2
-//        Test Case 4: Number of vowels = 1
-//        Test Case 5: Number of vowels = 11
-//        Test Case 6: Number of vowels = 0
+//Test Case 1:
+//        Number of vowels = 3
+//        Number of consonants = 7
+//
+//        Test Case 2:
+//        Number of vowels = 5
+//        Number of consonants = 11
+//
+//        Test Case 3:
+//        Number of vowels = 2
+//        Number of consonants = 2
+//
+//        Test Case 4:
+//        Number of vowels = 1
+//        Number of consonants = 5
+//
+//        Test Case 5:
+//        Number of vowels = 11
+//        Number of consonants = 24
+//
+//        Test Case 6:
+//        Number of vowels = 0
+//        Number of consonants = 0
 
 
 //****************************************************---****************************************************************
@@ -646,3 +695,5 @@ class PowerCalculator {
 //Test Case 4: 7^2 = 49
 //Test Case 5: 1^5 = 1
 
+//****************************************************---****************************************************************
+// 9.
