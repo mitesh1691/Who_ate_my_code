@@ -906,3 +906,694 @@ class DifferenceBetweenSums {
 //Test Case 5: Difference Between Sums = 5
 
 //******************************************************---****************************************************************
+// 11. Armstrong Number
+//
+//You are tasked with creating a Java program to determine whether a given integer 'n' is an Armstrong number.
+// An Armstrong number is a number that is equal to the sum of its own digits each raised to the power of the number of digits in the number.
+
+//Input:
+//    n: An integer representing the number to be checked for being an Armstrong number.
+
+//Output:
+//    Returns true if the input number n is an Armstrong number, and false otherwise.
+
+// Example 1
+//Input: 153
+//Output: true
+//Explanation: 1^3 + 5^3 + 3^3 = 153
+
+// Example 2
+//Input: 370
+//Output: true
+//Explanation: 3^3 + 7^3 + 0^3 = 370
+
+// Example 3
+//Input: 9474
+//Output: true
+//Explanation: 9^4 + 4^4 + 7^4 + 4^4 = 9474
+
+//// Example 4
+//Input: 123
+//Output: false
+//Explanation: 1^3 + 2^3 + 3^3 ≠ 123
+
+//Notes:
+//        The solution should efficiently determine whether the input number is an Armstrong number.
+//        Armstrong numbers are positive integers with at least two digits.
+//        The program should run without errors for valid input values.
+
+class ArmstrongNumber {
+
+    // Method to check if a number is Armstrong
+    public static boolean isArmstrong(int n) {
+        // Count the number of digits in the number
+        int numDigits = String.valueOf(n).length();
+
+        int sum = 0;
+        int temp = n;
+
+        // Calculate the sum of digits raised to the power of numDigits
+        while (temp > 0) {
+            int digit = temp % 10;
+            sum += Math.pow(digit, numDigits);
+            temp /= 10;
+        }
+
+        // Check if the sum is equal to the original number
+        return sum == n;
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Test Cases
+        System.out.println("Test Case 1:");
+        int n1 = 153;
+        System.out.println("Input: " + n1);
+        System.out.println("Output: " + isArmstrong(n1));
+
+        System.out.println("\nTest Case 2:");
+        int n2 = 370;
+        System.out.println("Input: " + n2);
+        System.out.println("Output: " + isArmstrong(n2));
+
+        System.out.println("\nTest Case 3:");
+        int n3 = 9474;
+        System.out.println("Input: " + n3);
+        System.out.println("Output: " + isArmstrong(n3));
+
+        System.out.println("\nTest Case 4:");
+        int n4 = 123;
+        System.out.println("Input: " + n4);
+        System.out.println("Output: " + isArmstrong(n4));
+    }
+}
+
+// sample output:
+// Test Case 1:
+//Input: 153
+//Output: true
+
+//Test Case 2:
+//Input: 370
+//Output: true
+
+//Test Case 3:
+//Input: 9474
+//Output: true
+
+//Test Case 4:
+//Input: 123
+//Output: false
+
+
+//******************************************************---****************************************************************
+// 12.  Count Unique Characters in a String
+
+//You are tasked with writing a Java program to count the number of unique characters in a given string.
+// The uniqueness of characters should be case insensitive, meaning uppercase and lowercase characters should be treated as the same.
+//Input:
+//    str: A string containing characters.
+
+//Output:
+//    Returns an integer representing the count of unique characters in the input string str.
+
+// Example 1
+//Input: "Hello"
+//Output: 3  // 'H', 'e', 'o'
+
+//Example 2
+//Input: "Mississippi"
+//Output: 1  // 'M'
+
+//Example 3
+//Input: "JavaProgramming"
+//Output: 6  // 'J', 'v', 'P', 'o', 'g', 'i'
+
+//Notes:
+//    The input string may contain alphanumeric characters and special symbols.
+//    The program should consider characters case-insensitively. For example, 'a' and 'A' should be considered the same character.
+//    The program should efficiently determine the count of unique characters in the string.
+
+class UniqueCharacterCounter {
+
+    // Method to count the number of unique characters in a string
+    public static int countUniqueCharacters(String str) {
+        // Array to store frequency of characters, considering case insensitivity
+        int[] frequency = new int[26];  // Considering only alphabets (case-insensitive)
+        str = str.toLowerCase();  // Convert the string to lowercase
+
+        // Iterate through the string and update frequency array
+        for (char ch : str.toCharArray()) {
+            if (Character.isLetter(ch)) {
+                frequency[ch - 'a']++;
+            }
+        }
+
+        // Count unique characters
+        int uniqueCount = 0;
+        for (int freq : frequency) {
+            if (freq == 1) {
+                uniqueCount++;
+            }
+        }
+
+        return uniqueCount;
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Test Cases
+        String str1 = "Hello";
+        System.out.println("Test Case 1:");
+        System.out.println("Input: " + str1);
+        System.out.println("Output: " + countUniqueCharacters(str1));
+
+        String str2 = "Mississippi";
+        System.out.println("\nTest Case 2:");
+        System.out.println("Input: " + str2);
+        System.out.println("Output: " + countUniqueCharacters(str2));
+
+        String str3 = "JavaProgramming";
+        System.out.println("\nTest Case 3:");
+        System.out.println("Input: " + str3);
+        System.out.println("Output: " + countUniqueCharacters(str3));
+    }
+}
+
+// sample output:
+// Test Case 1:
+//Input: Hello
+//Output: 3
+
+//Test Case 2:
+//Input: Mississippi
+//Output: 1
+
+//Test Case 3:
+//Input: JavaProgramming
+//Output: 6
+
+
+
+//******************************************************---****************************************************************
+// 13. Peak Element in Array
+
+//You are given an array of integers.
+// A peak element in the array is an element that is strictly greater than its neighbors.
+// It is the largest element in the array, satisfying the given condition. Additionally, it's important to note that there are no duplicates in the array.
+
+//Input:
+//    nums: An array of integers.
+
+//Output:
+//    Returns the peak element in the array.
+
+//// Example 1
+//Input: nums = [5, 10, 20, 15]
+//Output: 20
+//Explanation: The element 20 is strictly greater than its neighbors 10 and 15.
+
+//// Example 2
+//Input: nums = [1, 3, 6, 7, 4, 2]
+//Output: 7
+//Explanation: The element 7 is strictly greater than its neighbors 6 and 4.
+
+//// Example 3
+//Input: nums = [10, 20, 30, 40]
+//Output: 40
+//Explanation: The element 40 is strictly greater than its neighbor 30.
+
+//// Example 4
+//Input: nums = [5, 10, 15, 20, 25]
+//Output: 25
+//Explanation: The element 25 is strictly greater than its neighbor 20.
+
+//Notes:
+//    The array will contain at least one element.
+//    There will be exactly one peak element in the array.
+//    The peak element is guaranteed to be greater than its adjacent elements.
+//    Use linear search approach to find the peak element efficiently.
+
+class PeakElement {
+
+    public static int findPeakElement(int[] nums) {
+        int n = nums.length;
+
+        // Edge cases
+        if (n == 1) {
+            return nums[0];
+        }
+
+        // Check first element
+        if (nums[0] > nums[1]) {
+            return nums[0];
+        }
+
+        // Check last element
+        if (nums[n - 1] > nums[n - 2]) {
+            return nums[n - 1];
+        }
+
+        // Check middle elements
+        for (int i = 1; i < n - 1; i++) {
+            if (nums[i] > nums[i - 1] && nums[i] > nums[i + 1]) {
+                return nums[i];
+            }
+        }
+
+        return -1; // Peak element not found
+    }
+
+    public static void main(String[] args) {
+        // Test Cases
+        int[] nums1 = {5, 10, 20, 15};
+        System.out.println("Test Case 1: " + findPeakElement(nums1)); // Output: 20
+
+        int[] nums2 = {1, 3, 6, 7, 4, 2};
+        System.out.println("Test Case 2: " + findPeakElement(nums2)); // Output: 7
+
+        int[] nums3 = {10, 20, 30, 40};
+        System.out.println("Test Case 3: " + findPeakElement(nums3)); // Output: 40
+
+        int[] nums4 = {5, 10, 15, 20, 25};
+        System.out.println("Test Case 4: " + findPeakElement(nums4)); // Output: 25
+
+        int[] nums5 = {1};
+        System.out.println("Test Case 5: " + findPeakElement(nums5)); // Output: 1
+
+        int[] nums6 = {10, 9, 8, 7};
+        System.out.println("Test Case 6: " + findPeakElement(nums6)); // Output: 10
+
+        int[] nums7 = {10, 11, 13, 16, 20, 8, 5, 4};
+        System.out.println("Test Case 7: " + findPeakElement(nums7)); // Output: 20
+
+        int[] nums8 = {20, 40, 50, 70, 90, 60, 30, 10};
+        System.out.println("Test Case 8: " + findPeakElement(nums8)); // Output: 90
+    }
+}
+
+// sample output:
+// Test Case 2: 7
+//Test Case 3: 40
+//Test Case 4: 25
+//Test Case 5: 1
+//Test Case 6: 10
+//Test Case 7: 20
+//Test Case 8: 90
+
+//******************************************************---****************************************************************
+// 14. Leap Year Checker
+//
+//You are tasked with creating a Java program to determine whether a given year is a leap year or not.
+// A leap year is a year that is evenly divisible by 4, except for years that are evenly divisible by 100.
+// However, years that are evenly divisible by 400 are leap years.
+
+//Input:
+//    year: An integer representing the year to be checked.
+
+//Output:
+//    Returns true if the input year is a leap year, and false otherwise.
+
+// Example 1
+//Input: year = 2020
+//Output: true
+//Explanation: 2020 is divisible by 4 and not divisible by 100, so it's a leap year.
+
+// Example 2
+//Input: year = 1900
+//Output: false
+//Explanation: Although 1900 is divisible by 4, it is also divisible by 100.
+//Since it's not divisible by 400, it's not a leap year.
+
+// Example 3
+//Input: year = 2000
+//Output: true
+//Explanation: 2000 is divisible by 4, divisible by 100, and divisible by 400,
+//making it a leap year.
+
+// Example 4
+//Input: year = 2021
+//Output: false
+//Explanation: 2021 is not divisible by 4, so it's not a leap year.
+
+//Notes:
+//    The input year is a positive integer.
+//    Implement the logic to check whether the given year is a leap year or not.
+//    The program should return true if the year is a leap year, and false otherwise.
+class LeapYearChecker {
+
+    public static boolean isLeapYear(int year) {
+        if((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+            return true; // Leap year condition satisfied
+        } else {
+            return false; // Not a leap year
+        }
+    }
+
+    public static void main(String[] args) {
+        // Test Cases
+        int[] years = {2020, 1900, 2000, 2021, 2022, 3036, 3033, 1986, 1956, 1600};
+        for (int year : years) {
+            System.out.println("Is " + year + " a leap year? " + isLeapYear(year));
+        }
+    }
+}
+
+// sample output:
+// Is 2020 a leap year? true
+//Is 1900 a leap year? false
+//Is 2000 a leap year? true
+//Is 2021 a leap year? false
+//Is 2022 a leap year? false
+//Is 3036 a leap year? true
+//Is 3033 a leap year? false
+//Is 1986 a leap year? false
+//Is 1956 a leap year? true
+//Is 1600 a leap year? true
+
+//******************************************************---****************************************************************
+// 15. Sum of Digits
+
+//You are tasked with creating a Java program to calculate the sum of digits of a given integer number.
+
+//Input:
+//    number: An integer representing the number whose digits' sum needs to be calculated.
+
+//Output:
+//    Returns an integer representing the sum of digits of the input number.
+
+//// Example 1
+//Input: number = 123
+//Output: 6
+//Explanation: The sum of digits of the number 123 is 1 + 2 + 3 = 6.
+
+//// Example 2
+//Input: number = 9876
+//Output: 30
+//Explanation: The sum of digits of the number 9876 is 9 + 8 + 7 + 6 = 30.
+
+//// Example 3
+//Input: number = 5
+//Output: 5
+//Explanation: The sum of digits of the number 5 is 5.
+
+//Notes:
+//    The input number may be positive or negative.
+//    The sum of digits should be calculated for the absolute value of the number.
+//    The calculated sum should be returned as an integer.
+
+class SumOfDigits {
+
+    public static int sumOfDigits(int number) {
+        // Take absolute value to handle negative numbers
+        number = Math.abs(number);
+        int sum = 0;
+        while (number > 0) {
+            sum += number % 10; // Add the last digit to the sum
+            number /= 10; // Remove the last digit
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        // Test Cases
+        int[] numbers = {123, 9876, 5, -456, 0};
+        for (int number : numbers) {
+            System.out.println("Sum of digits for " + number + ": " + sumOfDigits(number));
+        }
+    }
+}
+
+// sample output:
+// Sum of digits for 123: 6
+//Sum of digits for 9876: 30
+//Sum of digits for 5: 5
+//Sum of digits for -456: 15
+//Sum of digits for 0: 0
+
+
+//******************************************************---****************************************************************
+// 16. Pairs with Sum
+
+//You are tasked with creating a Java program to find all pairs of elements in an array whose sum is equal to a given target number.
+
+//Input:
+//    nums: An array of integers representing the input array.
+//    target: An integer representing the target sum.
+//
+//Output:
+//    Prints all pairs of elements in the array nums whose sum equals the target.
+
+//// Example 1
+//Input: nums = {1, 2, 3, 4, 5}, target = 5
+//Output: (1, 4), (2, 3)
+//Explanation: In the input array, the pairs (1, 4) and (2, 3) have a sum equal to the target 5.
+
+//// Example 2
+//Input: nums = {3, 8, 5, 2, 9}, target = 10
+//Output: (3, 7), (8, 2)
+//Explanation: In the input array, the pairs (3, 7) and (8, 2) have a sum equal to the target 10.
+
+//Notes:
+//    Each pair should be printed only once, and the order of elements within the pair does not matter.
+//    If there are no such pairs in the array whose sum equals the target, print "No pairs found."
+
+ class PairSum {
+
+    public static void findPairs(int[] nums, int target) {
+        boolean foundPair = false;
+        // Brute-force approach: Check all pairs of elements in the array
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target) {
+                    System.out.println("(" + nums[i] + ", " + nums[j] + ")");
+                    foundPair = true;
+                }
+            }
+        }
+        if (!foundPair) {
+            System.out.println("No pairs found.");
+        }
+    }
+
+    public static void main(String[] args) {
+        // Test Cases
+        int[] nums1 = {1, 2, 3, 4, 5};
+        int target1 = 5;
+        System.out.println("Pairs with sum " + target1 + " in nums1:");
+        findPairs(nums1, target1);
+
+        int[] nums2 = {3, 8, 5, 2, 9};
+        int target2 = 10;
+        System.out.println("\nPairs with sum " + target2 + " in nums2:");
+        findPairs(nums2, target2);
+
+        int[] nums3 = {1, 2, 3, 4, 5};
+        int target3 = 20;
+        System.out.println("\nPairs with sum " + target3 + " in nums3:");
+        findPairs(nums3, target3);
+
+        int[] nums4 = {5, 4, 6, 5};
+        int target4 = 10;
+        System.out.println("\nPairs with sum " + target4 + " in nums4:");
+        findPairs(nums4, target4);
+
+        int[] nums5 = {1, 2, 3, 4, 5};
+        int target5 = 8;
+        System.out.println("\nPairs with sum " + target5 + " in nums5:");
+        findPairs(nums5, target5);
+    }
+}
+
+// sample output:
+// Pairs with sum 5 in nums1:
+//(1, 4)
+//(2, 3)
+
+//Pairs with sum 10 in nums2:
+//(8, 2)
+
+//Pairs with sum 20 in nums3:
+//No pairs found.
+
+//Pairs with sum 10 in nums4:
+//(5, 5)
+//(4, 6)
+
+//Pairs with sum 8 in nums5:
+//(3, 5)
+
+
+//******************************************************---****************************************************************
+// 17. Swap numbers
+
+//In this problem, you are given two integer variables a and b.
+// The task is to swap the values of these variables without using an additional third variable.
+//        This means that after the swapping operation, the value of a should be replaced with the original value of b, and vice versa, without using any extra storage.
+//
+//        The goal is to implement a method swap that performs this swapping operation efficiently,
+//        ensuring that the original values of a and b are modified accordingly.
+//
+//        Test cases are provided to validate the correctness of the swapping operation,
+//        covering different scenarios such as positive and negative integers, as well as zero.
+//        The method should be able to handle these cases and produce the correct swapped values for a and b.
+
+ class SwapNumbers {
+
+    public static void swap(int a, int b) {
+        System.out.println("Before swapping:");
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+
+        // Swapping without using a third variable
+        a = a + b;
+        b = a - b;
+        a = a - b;
+
+        System.out.println("After swapping:");
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+    }
+
+    public static void main(String[] args) {
+        // Test Cases
+        int num1 = 5, num2 = 10;
+        System.out.println("Swapping num1 and num2:");
+        swap(num1, num2);
+
+        int num3 = 3, num4 = 7;
+        System.out.println("\nSwapping num3 and num4:");
+        swap(num3, num4);
+
+        int num5 = 20, num6 = 50;
+        System.out.println("\nSwapping num3 and num4:");
+        swap(num5, num6);
+
+        int num7 = 1, num8 = 4;
+        System.out.println("\nSwapping num3 and num4:");
+        swap(num7, num8);
+
+        int num9 = 15, num10 = 25;
+        System.out.println("\nSwapping num3 and num4:");
+        swap(num9, num10);
+    }
+}
+
+// sample output:
+// Swapping num1 and num2:
+//Before swapping:
+//a = 5
+//b = 10
+//After swapping:
+//a = 10
+//b = 5
+//
+//Swapping num3 and num4:
+//Before swapping:
+//a = 3
+//b = 7
+//After swapping:
+//a = 7
+//b = 3
+//
+//Swapping num3 and num4:
+//Before swapping:
+//a = 20
+//b = 50
+//After swapping:
+//a = 50
+//b = 20
+//
+//Swapping num3 and num4:
+//Before swapping:
+//a = 1
+//b = 4
+//After swapping:
+//a = 4
+//b = 1
+//
+//Swapping num3 and num4:
+//Before swapping:
+//a = 15
+//b = 25
+//After swapping:
+//a = 25
+//b = 15
+
+
+
+//******************************************************---****************************************************************
+// 18. Finding Factors
+
+//You are tasked with creating a Java program to find all the factors (numbers that evenly divide) of a given input number.
+
+//Input:
+//    n: A positive integer representing the input number.
+
+//Output:
+//    Prints all the factors of the input number n.
+
+//// Example 1
+//Input: n = 12
+//Output: Factors of 12: 1, 2, 3, 4, 6, 12
+//Explanation: The factors of 12 are 1, 2, 3, 4, 6, and 12.
+
+//// Example 2
+//Input: n = 15
+//Output: Factors of 15: 1, 3, 5, 15
+//Explanation: The factors of 15 are 1, 3, 5, and 15.
+
+//Notes:
+//    Factors are the numbers that divide the given input number evenly without leaving a remainder.
+//    The factors should be printed in ascending order.
+//    Include the input number itself and 1 as factors.
+
+class Factors {
+
+    public static void findFactors(int n) {
+        System.out.print("Factors of " + n + ": ");
+        // Iterate from 1 to n and check if i divides n evenly
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
+                System.out.print(i);
+                // Print comma and space for separation except for the last factor
+                if (i != n) {
+                    System.out.print(", ");
+                }
+            }
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        // Test Cases
+        int num1 = 12;
+        System.out.println("Test Case 1:");
+        findFactors(num1);
+
+        int num2 = 15;
+        System.out.println("\nTest Case 2:");
+        findFactors(num2);
+
+        int num3 = 28;
+        System.out.println("\nTest Case 3:");
+        findFactors(num3);
+    }
+}
+
+// sample output:
+// Test Case 1:
+//Factors of 12: 1, 2, 3, 4, 6, 12
+//
+//Test Case 2:
+//Factors of 15: 1, 3, 5, 15
+//
+//Test Case 3:
+//Factors of 28: 1, 2, 4, 7, 14, 28
+
+
+//******************************************************---****************************************************************
+// 19.
+
+//******************************************************---****************************************************************
+// 20.

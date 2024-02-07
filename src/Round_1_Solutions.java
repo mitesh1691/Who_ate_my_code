@@ -696,4 +696,801 @@ class PowerCalculator {
 //Test Case 5: 1^5 = 1
 
 //****************************************************---****************************************************************
-// 9.
+// 9. Reverse N-Number Triangle
+
+//Aryan and his friends have a fascination for patterns.
+// They want to create a reverse N-number triangle for a given positive integer 'N'.
+// The reverse N-number triangle consists of rows where each row contains decreasing numbers starting from 'N' down to 1.
+
+//  Input:
+//        N: A positive integer representing the number of rows in the reverse number triangle.
+
+//    Output:
+//        Prints the reverse N-number triangle pattern as described.
+class ReverseNumberTriangle {
+    public static void reverseNumberTriangle(int N) {
+        // Iterate through each row
+        for (int i = N; i >= 1; i--) {
+            // Print numbers in decreasing order from 'N' to 'N - i + 1' for each row
+            for (int j = N; j >= N - i + 1; j--) {
+                System.out.print(j);
+            }
+            System.out.println(); // Move to the next line after printing each row
+        }
+    }
+
+    public static void main(String[] args) {
+        // Test Cases
+        System.out.println("Test Case 1:");
+        reverseNumberTriangle(5);
+
+        System.out.println("\nTest Case 2:");
+        reverseNumberTriangle(3);
+
+        System.out.println("\nTest Case 3:");
+        reverseNumberTriangle(7);
+    }
+}
+
+//sample output:
+// Test Case 1:
+//54321
+//5432
+//543
+//54
+//5
+
+//Test Case 2:
+//321
+//32
+//3
+
+//Test Case 3:
+//7654321
+//765432
+//76543
+//7654
+//765
+//76
+//7
+
+
+//****************************************************---****************************************************************
+// 10. : Right Angled Number Triangle
+
+// You are tasked with creating a Java program to generate a right-angled number triangle with a specified number of rows.
+// Each row of the triangle contains consecutive odd numbers starting from 1.
+// The first row contains 1, the second row contains 3 and 5, the third row contains 7, 9, and 11, and so on.
+
+//Input:
+//        rows: An integer representing the number of rows in the triangle.
+
+//        Output:
+//        Prints the right-angled number triangle pattern as described.
+
+// Example
+//Input: Enter number of rows: 5
+//Output:
+//1
+//3 5
+//7 9 11
+//13 15 17 19
+//21 23 25 27 29
+
+//Notes:
+//        The solution should efficiently generate and print the right-angled number triangle pattern.
+//        The input rows will always be a positive integer.
+//        The program should run without errors for valid input values.
+
+
+ class RightAngledNumberTriangle {
+
+    // Method to print right-angled number triangle
+    public static void printRightAngledNumberTriangle(int rows) {
+        int number = 1;
+
+        // Iterate through each row
+        for (int i = 1; i <= rows; i++) {
+            // Print numbers in each row
+            for (int j = 1; j <= i; j++) {
+                System.out.print(number + " ");
+                number += 2; // Increment number by 2 for next odd number
+            }
+            System.out.println(); // Move to the next line after printing each row
+        }
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Test Cases
+        System.out.println("Test Case 1:");
+        printRightAngledNumberTriangle(5);
+
+        System.out.println("\nTest Case 2:");
+        printRightAngledNumberTriangle(4);
+
+        System.out.println("\nTest Case 3:");
+        printRightAngledNumberTriangle(6);
+    }
+}
+
+
+// sample output:
+//Test Case 1:
+//        1
+//        3 5
+//        7 9 11
+//        13 15 17 19
+//        21 23 25 27 29
+
+//        Test Case 2:
+//        1
+//        3 5
+//        7 9 11
+//        13 15 17 19
+
+//        Test Case 3:
+//        1
+//        3 5
+//        7 9 11
+//        13 15 17 19
+//        21 23 25 27 29
+//        31 33 35 37 39 41
+
+
+
+//****************************************************---****************************************************************
+// 11. Right Angled Pattern 2
+
+// You are tasked with creating a Java program to generate a right-angled pattern with consecutive even numbers starting from 2.
+// Each row of the pattern contains consecutive even numbers incremented by 2.
+// The first row contains 2, the second row contains 4 and 6, the third row contains 8, 10, and 12, and so on.
+
+//Input:
+//    rows: An integer representing the number of rows in the pattern.
+
+//Output:
+//    Prints the right-angled pattern 2 as described.
+
+// Example
+//Input: Enter the number of rows: 5
+//Output:
+//2
+//4 6
+//8 10 12
+//14 16 18 20
+//22 24 26 28 30
+
+//Notes:
+//    The solution should efficiently generate and print the right-angled pattern 2.
+//    The input rows will always be a positive integer.
+//    The program should run without errors for valid input values.
+
+class RightAngledPattern2 {
+
+    // Method to print right-angled pattern 2
+    public static void printRightAngledPattern2(int rows) {
+        int number = 2;
+
+        // Iterate through each row
+        for (int i = 1; i <= rows; i++) {
+            // Print numbers in each row
+            for (int j = 1; j <= i; j++) {
+                System.out.print(number + " ");
+                number += 2; // Increment number by 2 for next even number
+            }
+            System.out.println(); // Move to the next line after printing each row
+        }
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Test Cases
+        System.out.println("Test Case 1:");
+        printRightAngledPattern2(5);
+
+        System.out.println("\nTest Case 2:");
+        printRightAngledPattern2(4);
+
+        System.out.println("\nTest Case 3:");
+        printRightAngledPattern2(6);
+    }
+}
+
+// sample output:
+// Test Case 1:
+//2
+//4 6
+//8 10 12
+//14 16 18 20
+//22 24 26 28 30
+
+//Test Case 2:
+//2
+//4 6
+//8 10 12
+//14 16 18 20
+
+//Test Case 3:
+//2
+//4 6
+//8 10 12
+//14 16 18 20
+//22 24 26 28 30
+//32 34 36 38 40 42
+
+
+//****************************************************---****************************************************************
+
+// 12. Problem Description: Print Fibonacci Series
+
+//You are tasked with creating a Java program to generate and print the Fibonacci series up to a specified number of terms.
+// The Fibonacci series is a sequence of numbers where each number is the sum of the two preceding ones, starting from 0 and 1.
+// The sequence thus starts as 0, 1, 1, 2, 3, 5, 8, 13, 21, and so on.
+
+
+//Input:
+//    terms: An integer representing the number of terms in the Fibonacci series to generate and print.
+
+//Output:
+//    Prints the Fibonacci series up to the specified number of terms.
+
+
+// Example
+//Input: Enter the number of terms: 8
+//Output:
+//Fibonacci Series: 0 1 1 2 3 5 8 13 21
+
+//Notes:
+//    The solution should efficiently generate and print the Fibonacci series.
+//    The input terms will always be a positive integer.
+//    The program should run without errors for valid input values.
+
+class FibonacciSeries {
+
+    // Method to print Fibonacci series
+    public static void printFibonacciSeries(int terms) {
+        int firstTerm = 0, secondTerm = 1;
+
+        // Print the first two terms of Fibonacci series
+        System.out.print("Fibonacci Series: " + firstTerm + " " + secondTerm);
+
+        // Generate and print remaining terms
+        for (int i = 2; i <= terms; i++) {
+            int nextTerm = firstTerm + secondTerm;
+            System.out.print(" " + nextTerm);
+            firstTerm = secondTerm;
+            secondTerm = nextTerm;
+        }
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Test Cases
+        System.out.println("Test Case 1:");
+        printFibonacciSeries(8);
+
+        System.out.println("\nTest Case 2:");
+        printFibonacciSeries(10);
+
+        System.out.println("\nTest Case 3:");
+        printFibonacciSeries(12);
+    }
+}
+
+// sample output:
+// Test Case 1:
+//Fibonacci Series: 0 1 1 2 3 5 8 13 21
+//Test Case 2:
+//Fibonacci Series: 0 1 1 2 3 5 8 13 21 34 55
+//Test Case 3:
+//Fibonacci Series: 0 1 1 2 3 5 8 13 21 34 55 89 144
+
+//****************************************************---****************************************************************
+// 13. Calculate Sum Excluding Multiples of 3
+
+//You are tasked with creating a Java program to calculate the sum of all numbers up to a given input, excluding the numbers that are divisible by 3.
+
+//Input:
+//    n: An integer representing the upper limit up to which the sum should be calculated (inclusive).
+
+//Output:
+//    Returns an integer representing the sum of numbers up to n, excluding those divisible by 3.
+
+// Example
+//Input: 8
+//Output: 27
+//Explanation: The sum of numbers up to 8 excluding multiples of 3: 1 + 2 + 4 + 5 + 7 + 8 = 27
+
+//Notes:
+//    The solution should efficiently calculate the sum excluding multiples of 3.
+//    The input n will always be a non-negative integer.
+//    The program should run without errors for valid input values.
+
+class SumExcludingMultiplesOfThree {
+
+    // Method to calculate sum excluding multiples of 3
+    public static int sumExcludingMultiplesOfThree(int n) {
+        int sum = 0;
+
+        // Iterate through numbers up to n
+        for (int i = 1; i <= n; i++) {
+            // Add the number to sum if it's not divisible by 3
+            if (i % 3 != 0) {
+                sum += i;
+            }
+        }
+        return sum;
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Test Cases
+        System.out.println("Test Case 1:");
+        int result1 = sumExcludingMultiplesOfThree(8);
+        System.out.println("Output: " + result1);
+
+        System.out.println("\nTest Case 2:");
+        int result2 = sumExcludingMultiplesOfThree(10);
+        System.out.println("Output: " + result2);
+
+        System.out.println("\nTest Case 3:");
+        int result3 = sumExcludingMultiplesOfThree(12);
+        System.out.println("Output: " + result3);
+    }
+}
+
+
+// sample output:
+//Test Case 1:
+//Output: 27
+
+//Test Case 2:
+//Output: 37
+
+//Test Case 3:
+//Output: 48
+
+//****************************************************---****************************************************************
+// 14. Reverse a Number
+
+//You are tasked with creating a Java program to reverse a given number.
+// Given an input integer, the program should reverse the digits of the number and return the result.
+
+//Input:
+//    number: An integer representing the number to be reversed.
+
+//Output:
+//    Returns an integer representing the reversed number.
+
+//Example
+//Input: 3221
+//Output: 1223
+
+//Notes:
+//    The solution should efficiently reverse the digits of the given number.
+//    Ignore negative numbers, as reversing them would change the sign.
+//    The program should run without errors for valid input values.
+
+class ReverseNumber {
+
+    // Method to reverse a number
+    public static int reverseNumber(int number) {
+        // Ensure number is positive
+        number = Math.abs(number);
+
+        int reversedNumber = 0;
+
+        // Reverse the digits of the number
+        while (number > 0) {
+            int digit = number % 10;
+            reversedNumber = reversedNumber * 10 + digit;
+            number /= 10;
+        }
+
+        return reversedNumber;
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Test Cases
+        System.out.println("Test Case 1:");
+        int result1 = reverseNumber(3221);
+        System.out.println("Output: " + result1);
+
+        System.out.println("\nTest Case 2:");
+        int result2 = reverseNumber(12345);
+        System.out.println("Output: " + result2);
+
+        System.out.println("\nTest Case 3:");
+        int result3 = reverseNumber(987654321);
+        System.out.println("Output: " + result3);
+    }
+}
+
+// sample output:
+// Test Case 1:
+//Output: 1223
+
+//Test Case 2:
+//Output: 54321
+
+//Test Case 3:
+//Output: 123456789
+
+
+//****************************************************---****************************************************************
+// 15.  Check Palindrome Number
+
+//You are tasked with creating a Java program to determine whether a given number is a palindrome or not.
+// A palindrome number is a number that remains the same when its digits are reversed.
+
+//Input:
+//    number: An integer representing the number to be checked for palindrome property.
+
+//Output:
+//    Returns a boolean value true if the given number is a palindrome, false otherwise.
+
+//// Example
+//Input: 1221
+//Output: true
+//Explanation: 1221 is a palindrome number.
+
+//Input: 12345
+//Output: false
+//Explanation: 12345 is not a palindrome number.
+
+//Notes:
+//    The solution should efficiently determine whether the given number is a palindrome.
+//    Ignore negative numbers, as reversing them would change the sign.
+//    The program should run without errors for valid input values
+
+class PalindromeNumber {
+
+    // Method to check if a number is palindrome
+    public static boolean isPalindrome(int number) {
+        // Ensure number is positive
+        number = Math.abs(number);
+
+        // Reverse the number
+        int reversedNumber = 0;
+        int originalNumber = number;
+
+        while (number > 0) {
+            int digit = number % 10;
+            reversedNumber = reversedNumber * 10 + digit;
+            number /= 10;
+        }
+
+        // Check if original number is equal to reversed number
+        return originalNumber == reversedNumber;
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Test Cases
+        System.out.println("Test Case 1:");
+        int number1 = 1221;
+        System.out.println("Input: " + number1);
+        System.out.println("Output: " + isPalindrome(number1));
+
+        System.out.println("\nTest Case 2:");
+        int number2 = 12345;
+        System.out.println("Input: " + number2);
+        System.out.println("Output: " + isPalindrome(number2));
+
+        System.out.println("\nTest Case 3:");
+        int number3 = 12321;
+        System.out.println("Input: " + number3);
+        System.out.println("Output: " + isPalindrome(number3));
+    }
+}
+
+// sample output:
+// Test Case 1:
+//Input: 1221
+//Output: true
+
+//Test Case 2:
+//Input: 12345
+//Output: false
+
+//Test Case 3:
+//Input: 12321
+//Output: true
+
+
+//****************************************************---****************************************************************
+// 16. Count Alphabetic Characters in a String
+
+//You are tasked with creating a Java program to count the number of alphabetic characters (letters) in a given string.
+// Alphabetic characters include all uppercase and lowercase letters of the alphabet (A-Z, a-z).
+
+//Input:
+//    str: A string representing the input string in which alphabetic characters need to be counted.
+
+//Output:
+//    Returns an integer representing the count of alphabetic characters in the input string.
+
+// Example
+//Input: "Ja$#@ck"
+//Output: 4
+//Explanation: The string contains the alphabetic characters 'J', 'a', 'c', and 'k'.
+
+//Input: "Hello World!"
+//Output: 10
+//Explanation: The string contains alphabetic characters from 'a' to 'z' and 'A' to 'Z'.
+
+//Notes:
+//    The solution should efficiently count the number of alphabetic characters in the given string.
+//    Consider both uppercase and lowercase alphabetic characters.
+//    Ignore non-alphabetic characters (e.g., digits, symbols, spaces).
+//    The program should run without errors for valid input values.
+
+class CountAlphabeticCharacters {
+
+    // Method to count alphabetic characters in a string
+    public static int countAlphabeticCharacters(String str) {
+        int count = 0;
+
+        // Iterate through each character in the string
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+
+            // Check if the character is alphabetic
+            if (Character.isLetter(ch)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Test Cases
+        System.out.println("Test Case 1:");
+        String str1 = "Ja$#@ck";
+        System.out.println("Input: " + str1);
+        System.out.println("Output: " + countAlphabeticCharacters(str1));
+
+        System.out.println("\nTest Case 2:");
+        String str2 = "Hello World!";
+        System.out.println("Input: " + str2);
+        System.out.println("Output: " + countAlphabeticCharacters(str2));
+
+        System.out.println("\nTest Case 3:");
+        String str3 = "123ABCabcXYZxyz";
+        System.out.println("Input: " + str3);
+        System.out.println("Output: " + countAlphabeticCharacters(str3));
+    }
+}
+
+// sample output:
+// Test Case 1:
+//Input: Ja$#@ck
+//Output: 4
+
+//Test Case 2:
+//Input: Hello World!
+//Output: 10
+
+//Test Case 3:
+//Input: 123ABCabcXYZxyz
+//Output: 12
+
+
+
+//****************************************************---****************************************************************
+// 17. Find Maximum and Minimum Elements in an Array
+
+//You are required to implement a Java program that finds the maximum and minimum elements in a given array of integers.
+
+//Input
+//    nums: An array of integers.
+
+//Output:
+//    Returns an array of two integers, where the first element represents the maximum element in the input array nums,
+//    and the second element represents the minimum element in the array.
+
+//// Example 1
+//Input: [5, 2, 9, 3, 7]
+//Output: [9, 2]
+
+//// Example 2
+//Input: [10, 20, 30, 40, 50]
+//Output: [50, 10]
+
+//// Example 3
+//Input: [-5, -2, -9, -3, -7]
+//Output: [-2, -9]
+
+//Notes:
+//    The input array may contain both positive and negative integers.
+//    The array will not be empty, and it will contain at least one element.
+//    The program should efficiently determine the maximum and minimum elements in the array.
+
+class MaxMinInArray {
+
+    // Method to find maximum and minimum elements in an array
+    public static int[] findMaxAndMin(int[] nums) {
+        int[] result = new int[2];
+        if (nums == null || nums.length == 0) {
+            return result;
+        }
+
+        int max = nums[0];
+        int min = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > max) {
+                max = nums[i];
+            }
+            if (nums[i] < min) {
+                min = nums[i];
+            }
+        }
+
+        result[0] = max;
+        result[1] = min;
+
+        return result;
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Test Cases
+        int[] nums1 = {5, 2, 9, 3, 7};
+        int[] result1 = findMaxAndMin(nums1);
+        System.out.println("Test Case 1:");
+        System.out.println("Input: " + Arrays.toString(nums1));
+        System.out.println("Output: Max = " + result1[0] + ", Min = " + result1[1]);
+
+        int[] nums2 = {10, 20, 30, 40, 50};
+        int[] result2 = findMaxAndMin(nums2);
+        System.out.println("\nTest Case 2:");
+        System.out.println("Input: " + Arrays.toString(nums2));
+        System.out.println("Output: Max = " + result2[0] + ", Min = " + result2[1]);
+
+        int[] nums3 = {-5, -2, -9, -3, -7};
+        int[] result3 = findMaxAndMin(nums3);
+        System.out.println("\nTest Case 3:");
+        System.out.println("Input: " + Arrays.toString(nums3));
+        System.out.println("Output: Max = " + result3[0] + ", Min = " + result3[1]);
+    }
+}
+
+// sample output:
+// Test Case 1:
+//Input: [5, 2, 9, 3, 7]
+//Output: Max = 9, Min = 2
+//
+//Test Case 2:
+//Input: [10, 20, 30, 40, 50]
+//Output: Max = 50, Min = 10
+//
+//Test Case 3:
+//Input: [-5, -2, -9, -3, -7]
+//Output: Max = -2, Min = -9
+
+//****************************************************---****************************************************************
+// 18. Product of Array Elements
+
+//You are required to create a Java program to find the product of all elements in a given integer array.
+
+//Input:
+//    nums: An integer array containing the elements whose product needs to be calculated.
+
+//Output:
+//    Returns a long integer representing the product of all elements in the input array.
+
+//// Example 1
+//Input: nums = {1, 2, 3, 4, 5}
+//Output: 120
+//Explanation: The product of all elements in the array {1, 2, 3, 4, 5} is 1 * 2 * 3 * 4 * 5 = 120.
+
+//// Example 2
+//Input: nums = {3, 7, 2, 8}
+//Output: 336
+//Explanation: The product of all elements in the array {3, 7, 2, 8} is 3 * 7 * 2 * 8 = 336.
+
+//// Example 3
+//Input: nums = {5}
+//Output: 5
+//Explanation: The product of all elements in the array {5} is 5.
+
+//Notes:
+//    The input array may contain both positive and negative integers.
+//    The input array may have zero or multiple elements.
+//    The product of array elements should be calculated and returned as a long integer.
+
+class ProductOfArrayElements {
+
+    public static long productOfArrayElements(int[] nums) {
+        long product = 1;
+        for (int num : nums) {
+            product *= num;
+        }
+        return product;
+    }
+
+    public static void main(String[] args) {
+        // Test Cases
+        int[][] testCases = {
+                {1, 2, 3, 4, 5},
+                {3, 7, 2, 8},
+                {5},
+                {-1, -2, -3, -4, -5},
+                {0},
+                {10, 20, 30, 40}
+        };
+
+        for (int[] nums : testCases) {
+            System.out.println("Product of array elements: " + productOfArrayElements(nums));
+        }
+    }
+}
+
+// sample output:
+// Product of array elements: 120
+//Product of array elements: 336
+//Product of array elements: 5
+//Product of array elements: -120
+//Product of array elements: 0
+//Product of array elements: 240000
+
+
+//****************************************************---****************************************************************
+// 19. Summation of Natural Numbers
+//
+//You are required to create a Java program to calculate the summation of the first 'n' natural numbers.
+
+//Input:
+//    n: An integer representing the number of natural numbers for which the summation needs to be calculated.
+
+//Output:
+//    Returns an integer representing the summation of the first 'n' natural numbers.
+
+//// Example 1
+//Input: n = 5
+//Output: 15
+//Explanation: The summation of the first 5 natural numbers (1 + 2 + 3 + 4 + 5) is 15.
+
+//// Example 2
+//Input: n = 10
+//Output: 55
+//Explanation: The summation of the first 10 natural numbers (1 + 2 + 3 + ... + 10) is 55.
+
+//// Example 3
+//Input: n = 1
+//Output: 1
+//Explanation: The summation of the first 1 natural number (1) is 1.
+
+//Notes:
+//    The input 'n' represents the count of natural numbers for which the summation needs to be calculated.
+//    The calculated summation should be returned as an integer.
+
+class SumOfNaturalNumbers {
+
+    public static int sumOfNaturalNumbers(int n) {
+        // Calculate the summation using the formula (n * (n + 1)) / 2
+        return (n * (n + 1)) / 2;
+    }
+
+    public static void main(String[] args) {
+        // Test Cases
+        int[] numbers = {5, 10, 1, 100, 20, 30, 15};
+        for (int n : numbers) {
+            System.out.println("Summation of first " + n + " natural numbers: " + sumOfNaturalNumbers(n));
+        }
+    }
+}
+
+// sample output:
+// Summation of first 5 natural numbers: 15
+//Summation of first 10 natural numbers: 55
+//Summation of first 1 natural numbers: 1
+//Summation of first 100 natural numbers: 5050
+//Summation of first 20 natural numbers: 210
+//Summation of first 30 natural numbers: 465
+//Summation of first 15 natural numbers: 120
