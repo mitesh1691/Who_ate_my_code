@@ -1193,6 +1193,7 @@ class PeakElement {
 }
 
 // sample output:
+// Test Case 1: 20
 // Test Case 2: 7
 //Test Case 3: 40
 //Test Case 4: 25
