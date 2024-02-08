@@ -1,0 +1,49 @@
+*****************************************************************************************************************************
+1. Java:
+
+    Install Java Development Kit (JDK):
+        - Open a terminal.
+        - Run the following command to install OpenJDK, which is the open-source implementation of the Java Platform:\
+
+    //Commands:
+        sudo apt update
+        sudo apt install default-jdk
+
+    You can verify the installation by typing `java -version` in the terminal.
+
+    //Compile and Run Java Programs:
+        - Save your Java program with a .java extension.
+        - Compile it using the javac command:
+            javac YourProgram.java
+
+    //Run the compiled program using the java command:
+            java YourProgram
+
+
+
+*****************************************************************************************************************************
+
+2. Python:
+
+    Python is usually pre-installed on Ubuntu. You can run Python programs directly from the terminal:
+            python YourProgram.py
+
+*****************************************************************************************************************************
+
+3. Compile and Run C/C++ Programs:
+        - Save your C program with a .c extension or C++ program with a .cpp extension.
+        - Compile it using the gcc (for C) or g++ (for C++) command:
+
+                gcc YourProgram.c -o YourProgram   (for C)
+
+            or
+
+                g++ YourProgram.cpp -o YourProgram  (for C++)
+
+        - Run the compiled program:
+
+                ./YourProgram
+
+*****************************************************************************************************************************
+Ensure you are in the correct directory containing your program files before executing the above commands.
+You can use the `cd` command to navigate to the directory where your program is located.
