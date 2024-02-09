@@ -1310,7 +1310,9 @@ class CountAlphabeticCharacters {
 //    The array will not be empty, and it will contain at least one element.
 //    The program should efficiently determine the maximum and minimum elements in the array.
 
-class MaxMinInArray {
+
+//import java.util.Arrays;
+class MaxMinInArray { // import arrays
 
     // Method to find maximum and minimum elements in an array
     public static int[] findMaxAndMin(int[] nums) {
