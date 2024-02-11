@@ -36,6 +36,8 @@
 //        Solution Should be of O(n) time complexity
 //        The function should consider spaces and be case-insensitive.
 
+import java.util.Arrays;
+
 class AnagramChecker {
 
     public static boolean areAnagrams(String str1, String str2) {
@@ -314,82 +316,96 @@ class Fibonacci {
 
 //******************************************************---****************************************************************
 
-//  4. Problem Description: Find Factorial using Recursion
+//  4. Problem Description: Find the Next Prime Number
 
-//You are tasked with creating a Java program to find the factorial of a given number using 'recursion'.
-// The factorial of a non-negative integer n is the product of all positive integers less than or equal to n.
-// The program should efficiently calculate and return the factorial of the input number.
+//You are tasked with creating a Java program to find the next prime number after a given number.
+// The program should efficiently identify and return the next prime number that comes after the provided input.
 
-//      Input:
-//        n: A non-negative integer for which the factorial needs to be calculated (n >= 0).
-//
-//      Output:
-//        Returns the factorial of the input number.
+//Input:
+//    num: A positive integer greater than 1.
 
-//Example:
+//Output:
+//    Returns the next prime number greater than the input.
+
 // Example 1
-//long result1 = calculateFactorial(5);
-// Output: 120 (Factorial of 5: 5 * 4 * 3 * 2 * 1 = 120)
+//int result1 = findNextPrime(10);
+// Output: 11 (The next prime number after 10 is 11)
 
 // Example 2
-//long result2 = calculateFactorial(8);
-// Output: 40320 (Factorial of 8: 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1 = 40320)
+//int result2 = findNextPrime(20);
+// Output: 23 (The next prime number after 20 is 23)
 
 // Example 3
-//long result3 = calculateFactorial(0);
-// Output: 1 (Factorial of 0 is defined as 1)
+//int result3 = findNextPrime(31);
+// Output: 37 (The next prime number after 31 is 37)
 
-// The function should use recursion to calculate the factorial.
+//Notes:
+//    The solution should efficiently find the next prime number after the given input.
+//    The function should consider positive integers greater than 1 as input.
+//    The program should run without errors for valid input values.
 
+class NextPrime {
 
-class FactorialRecursive {
-
-    public static long calculateFactorial(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("Input should be a non-negative integer.");
+    public static int findNextPrime(int num) {
+        if (num < 1) {
+            throw new IllegalArgumentException("Input should be a positive integer greater than 1.");
         }
 
-        if (n == 0 || n == 1) {
-            return 1; // Factorial of 0 and 1 is 1
+        while (true) {
+            num++;
+
+            if (isPrime(num)) {
+                return num; // Found the next prime number
+            }
+        }
+    }
+
+    private static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
         }
 
-        return n * calculateFactorial(n - 1);
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false; // Found a divisor, not a prime number
+            }
+        }
+
+        return true; // No divisors found, it's a prime number
     }
 
     public static void main(String[] args) {
         // Test Case 1
-        int input1 = 5;
-        long result1 = calculateFactorial(input1);
-        System.out.println("Test Case 1: Factorial of " + input1 + " = " + result1);
+        int input1 = 10;
+        int result1 = findNextPrime(input1);
+        System.out.println("Test Case 1: Next Prime Number = " + result1);
 
         // Test Case 2
-        int input2 = 8;
-        long result2 = calculateFactorial(input2);
-        System.out.println("Test Case 2: Factorial of " + input2 + " = " + result2);
+        int input2 = 20;
+        int result2 = findNextPrime(input2);
+        System.out.println("Test Case 2: Next Prime Number = " + result2);
 
         // Test Case 3
-        int input3 = 0;
-        long result3 = calculateFactorial(input3);
-        System.out.println("Test Case 3: Factorial of " + input3 + " = " + result3);
+        int input3 = 31;
+        int result3 = findNextPrime(input3);
+        System.out.println("Test Case 3: Next Prime Number = " + result3);
 
         // Test Case 4
-        int input4 = 3;
-        long result4 = calculateFactorial(input4);
-        System.out.println("Test Case 4: Factorial of " + input4 + " = " + result4);
-
-        // Test Case 5
-        int input5 = 7;
-        long result5 = calculateFactorial(input5);
-        System.out.println("Test Case 5: Factorial of " + input5 + " = " + result5);
+        int input4 = 1;
+        try {
+            int result4 = findNextPrime(input4);
+            System.out.println("Test Case 4: Next Prime Number = " + result4);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Test Case 4: " + e.getMessage());
+        }
     }
 }
 
-// Sample Output:
-// Test Case 1: Factorial of 5 = 120
-//Test Case 2: Factorial of 8 = 40320
-//Test Case 3: Factorial of 0 = 1
-//Test Case 4: Factorial of 3 = 6
-//Test Case 5: Factorial of 7 = 5040
+//Sample Output:
+// Test Case 1: Next Prime Number = 11
+//Test Case 2: Next Prime Number = 23
+//Test Case 3: Next Prime Number = 37
+//Test Case 4: Next Prime Number = 2
 
 //******************************************************---****************************************************************
 
@@ -598,225 +614,259 @@ class CharacterFrequency {
 
 //******************************************************---****************************************************************
 
-//  7. Problem Description: Find the Average of Elements in an Array
+//  7. Problem Description: Find the Sum of Two Largest Elements in an Array
+//
+////You are tasked with creating a Java program to find the sum of the two largest elements in an array.
+//// The program should efficiently calculate and return the sum of the two largest distinct elements in the array.
+//
+////Input:
+////    nums: An array of integers.
+//
+////Output:
+////    Returns the sum of the two largest distinct elements in the array.
+//
+//// Example 1
+////int[] arr1 = {3, 7, 2, 8, 5};
+////int result1 = sumOfTwoLargest(arr1);
+//// Output: 15 (The two largest elements are 8 and 7, and their sum is 15)
+//
+//// Example 2
+////int[] arr2 = {5, 5, 5, 5};
+////int result2 = sumOfTwoLargest(arr2);
+//// Output: 10 (The two largest distinct elements are both 5, and their sum is 10)
+//
+////Notes:
+////    The solution should efficiently find and calculate the sum of the two largest distinct elements in the array.
+////    The function should consider arrays of varying sizes and handle cases where there are not enough distinct elements.
+////    The program should run without errors for valid input arrays.
+//
+//class SumOfTwoLargest {
+//
+//    public static int sumOfTwoLargest(int[] nums) {
+//        if (nums == null || nums.length < 2) {
+//            throw new IllegalArgumentException("Array should contain at least two elements.");
+//        }
+//
+//        int firstLargest = Integer.MIN_VALUE;
+//        int secondLargest = Integer.MIN_VALUE;
+//
+//        for (int num : nums) {
+//            if (num > firstLargest) {
+//                secondLargest = firstLargest;
+//                firstLargest = num;
+//            } else if (num > secondLargest && num < firstLargest) {
+//                secondLargest = num;
+//            }
+//        }
+//
+//        if (secondLargest == Integer.MIN_VALUE) {
+//            throw new IllegalArgumentException("Array should contain at least two distinct elements.");
+//        }
+//
+//        return firstLargest + secondLargest;
+//    }
+//
+//    public static void main(String[] args) {
+//        // Test Case 1
+//        int[] arr1 = {3, 7, 2, 8, 5};
+//        int result1 = sumOfTwoLargest(arr1);
+//        System.out.println("Test Case 1: Sum of Two Largest = " + result1);
+//
+//        // Test Case 2
+//        int[] arr2 = {5, 8, 4, 3};
+//        int result2 = sumOfTwoLargest(arr2);
+//        System.out.println("Test Case 2: Sum of Two Largest = " + result2);
+//
+//        // Test Case 3
+//        int[] arr3 = {1, 2, 3, 4, 5};
+//        int result3 = sumOfTwoLargest(arr3);
+//        System.out.println("Test Case 3: Sum of Two Largest = " + result3);
+//
+//        // Test Case 4
+//        int[] arr4 = {10, 10, 20, 20, 30};
+//        int result4 = sumOfTwoLargest(arr4);
+//        System.out.println("Test Case 4: Sum of Two Largest = " + result4);
+//
+//        // Test Case 5
+//        int[] arr5 = {5, 3};
+//        int result5 = sumOfTwoLargest(arr5);
+//        System.out.println("Test Case 5: Sum of Two Largest = " + result5);
+//    }
+//}
+//
+////Sample Output:
+//// Test Case 1: Sum of Two Largest = 15
+////Test Case 2: Sum of Two Largest = 13
+////Test Case 3: Sum of Two Largest = 9
+////Test Case 4: Sum of Two Largest = 50
+////Test Case 5: Sum of Two Largest = 8
 
-//You are tasked with creating a Java program to find the average of elements in an array.
-// The program should efficiently calculate and return the average of all elements present in the array.
+
+
+//******************************************************---****************************************************************
+
+//  8. Problem Description: Square of the Sum of Digits
+
+//You are tasked with creating a Java program to find the square of the sum of digits of a given number.
+// The program should efficiently calculate and return the square of the sum of the individual digits of the input number.
 
 //Input:
-//    nums: An array of integers.
+//    num: A non-negative integer.
 
 //Output:
-//    Returns the average of all elements in the array.
-
+//    Returns the square of the sum of the individual digits of the input number.
 
 // Example 1
-//int[] arr1 = {1, 2, 3, 4, 5};
-//double result1 = findAverage(arr1);
-// Output: 3.0 (The average of elements 1, 2, 3, 4, 5 is (1 + 2 + 3 + 4 + 5) / 5 = 3.0)
+//int result1 = squareOfSumOfDigits(123);
+// Output: 36 (The sum of digits is 1 + 2 + 3 = 6, and the square of 6 is 36)
 
 // Example 2
-//int[] arr2 = {10, 20, 30, 40, 50};
-//double result2 = findAverage(arr2);
-// Output: 30.0 (The average of elements 10, 20, 30, 40, 50 is (10 + 20 + 30 + 40 + 50) / 5 = 30.0)
-
-class AverageOfElements {
-
-    public static double findAverage(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            throw new IllegalArgumentException("Array should contain at least one element.");
-        }
-
-        int sum = 0;
-
-        for (int num : nums) {
-            sum += num;
-        }
-
-        return (double) sum / nums.length;
-    }
-
-    public static void main(String[] args) {
-        // Test Case 1
-        int[] arr1 = {1, 2, 3, 4, 5};
-        double result1 = findAverage(arr1);
-        System.out.println("Test Case 1: Average of Elements = " + result1);
-
-        // Test Case 2
-        int[] arr2 = {10, 20, 30, 40, 50};
-        double result2 = findAverage(arr2);
-        System.out.println("Test Case 2: Average of Elements = " + result2);
-
-        // Test Case 3
-        int[] arr3 = {5};
-        double result3 = findAverage(arr3);
-        System.out.println("Test Case 3: Average of Elements = " + result3);
-
-        // Test Case 4
-        int[] arr4 = {-1, 0, 1};
-        double result4 = findAverage(arr4);
-        System.out.println("Test Case 4: Average of Elements = " + result4);
-
-        // Test Case 5
-        int[] arr5 = {2, 4, 6, 8, 10};
-        double result5 = findAverage(arr5);
-        System.out.println("Test Case 5: Average of Elements = " + result5);
-    }
-}
-
-// sample output:
-// Test Case 1: Average of Elements = 3.0
-//Test Case 2: Average of Elements = 30.0
-//Test Case 3: Average of Elements = 5.0
-//Test Case 4: Average of Elements = 0.0
-//Test Case 5: Average of Elements = 6.0
-
-
-
-//******************************************************---****************************************************************
-
-//  8. Problem Description: Count Even and Odd Numbers in an Array
-
-//You are tasked with creating a Java program to count the number of even and odd numbers in an array.
-// The program should efficiently determine and return the count of even and odd numbers present in the array.
-
-//Input:
-//    nums: An array of integers.
-
-//Output:
-//    Returns an array where the first element is the count of even numbers, and the second element is the count of odd numbers.
-
-// Example
-//    int[] arr = {2, 5, 8, 3, 6, 7};
-//    int[] result = countEvenOddNumbers(arr);
-// Output: [3, 3] (There are 3 even numbers {2, 8, 6} and 3 odd numbers {5, 3, 7})
-
-
-class CountEvenOddNumbers {
-
-    public static int[] countEvenOddNumbers(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            throw new IllegalArgumentException("Array should contain at least one element.");
-        }
-
-        int evenCount = 0;
-        int oddCount = 0;
-
-        for (int num : nums) {
-            if (num % 2 == 0) {
-                evenCount++;
-            } else {
-                oddCount++;
-            }
-        }
-
-        return new int[]{evenCount, oddCount};
-    }
-
-    public static void main(String[] args) {
-        // Test Case 1
-        int[] arr1 = {2, 5, 8, 3, 6, 7};
-        int[] result1 = countEvenOddNumbers(arr1);
-        System.out.println("Test Case 1: Even Count = " + result1[0] + ", Odd Count = " + result1[1]);
-
-        // Test Case 2
-        int[] arr2 = {10, 20, 30, 40, 50};
-        int[] result2 = countEvenOddNumbers(arr2);
-        System.out.println("Test Case 2: Even Count = " + result2[0] + ", Odd Count = " + result2[1]);
-
-        // Test Case 3
-        int[] arr3 = {7};
-        int[] result3 = countEvenOddNumbers(arr3);
-        System.out.println("Test Case 3: Even Count = " + result3[0] + ", Odd Count = " + result3[1]);
-
-        // Test Case 4
-        int[] arr4 = {-1, 0, 1};
-        int[] result4 = countEvenOddNumbers(arr4);
-        System.out.println("Test Case 4: Even Count = " + result4[0] + ", Odd Count = " + result4[1]);
-
-        // Test Case 5
-        int[] arr5 = {2, 4, 6, 8, 10};
-        int[] result5 = countEvenOddNumbers(arr5);
-        System.out.println("Test Case 5: Even Count = " + result5[0] + ", Odd Count = " + result5[1]);
-    }
-}
-
-// sample output:
-//Test Case 1: Even Count = 3, Odd Count = 3
-//Test Case 2: Even Count = 5, Odd Count = 0
-//Test Case 3: Even Count = 0, Odd Count = 1
-//Test Case 4: Even Count = 1, Odd Count = 2
-//Test Case 5: Even Count = 5, Odd Count = 0
-
-
-//******************************************************---****************************************************************
-
-//  9. Problem Description: Find the Maximum of Three Numbers
-
-//You are tasked with creating a Java program to find the maximum of three numbers.
-// The program should efficiently determine and return the largest value among the three input numbers.
-
-//Input:
-//    num1, num2, and num3: Three integers.
-
-//Output:
-//    Returns the maximum value among the three input numbers.
-
-// Example
-//int result = findMaximum(5, 12, 8);
-// Output: 12 (Among the numbers 5, 12, and 8, 12 is the largest)
+//int result2 = squareOfSumOfDigits(456);
+// Output: 81 (The sum of digits is 4 + 5 + 6 = 15, and the square of 15 is 225)
 
 //Notes:
-//    The solution should efficiently find and return the maximum value among the three input numbers.
-//    The function should handle integer inputs.
+//    The solution should efficiently calculate the square of the sum of digits for a given non-negative integer.
+//    The function should handle valid non-negative integer inputs.
 //    The program should run without errors for valid input numbers.
 
+class SquareOfSumOfDigits {
 
-class FindMaximum {
-
-    public static int findMaximum(int num1, int num2, int num3) {
-        int max = num1;
-
-        if (num2 > max) {
-            max = num2;
+    public static int squareOfSumOfDigits(int num) {
+        if (num < 0) {
+            throw new IllegalArgumentException("Input should be a non-negative integer.");
         }
 
-        if (num3 > max) {
-            max = num3;
+        int sumOfDigits = 0;
+
+        while (num > 0) {
+            int digit = num % 10;
+            sumOfDigits += digit;
+            num /= 10;
         }
 
-        return max;
+        int squareOfSum = sumOfDigits * sumOfDigits;
+        return squareOfSum;
     }
 
     public static void main(String[] args) {
         // Test Case 1
-        int result1 = findMaximum(5, 12, 8);
-        System.out.println("Test Case 1: Maximum = " + result1);
+        int input1 = 123;
+        int result1 = squareOfSumOfDigits(input1);
+        System.out.println("Test Case 1: Square of Sum of Digits = " + result1);
 
         // Test Case 2
-        int result2 = findMaximum(20, 15, 25);
-        System.out.println("Test Case 2: Maximum = " + result2);
+        int input2 = 456;
+        int result2 = squareOfSumOfDigits(input2);
+        System.out.println("Test Case 2: Square of Sum of Digits = " + result2);
 
         // Test Case 3
-        int result3 = findMaximum(10, 10, 10);
-        System.out.println("Test Case 3: Maximum = " + result3);
+        int input3 = 7890;
+        int result3 = squareOfSumOfDigits(input3);
+        System.out.println("Test Case 3: Square of Sum of Digits = " + result3);
 
         // Test Case 4
-        int result4 = findMaximum(-5, -2, -8);
-        System.out.println("Test Case 4: Maximum = " + result4);
+        int input4 = 0;
+        int result4 = squareOfSumOfDigits(input4);
+        System.out.println("Test Case 4: Square of Sum of Digits = " + result4);
 
         // Test Case 5
-        int result5 = findMaximum(0, 0, 0);
-        System.out.println("Test Case 5: Maximum = " + result5);
+        int input5 = 987654321;
+        int result5 = squareOfSumOfDigits(input5);
+        System.out.println("Test Case 5: Square of Sum of Digits = " + result5);
     }
 }
 
-// sample output:
-// Test Case 1: Maximum = 12
-//Test Case 2: Maximum = 25
-//Test Case 3: Maximum = 10
-//Test Case 4: Maximum = -2
-//Test Case 5: Maximum = 0
+//Sample Output:
+// Test Case 1: Square of Sum of Digits = 36
+//Test Case 2: Square of Sum of Digits = 225
+//Test Case 3: Square of Sum of Digits = 576
+//Test Case 4: Square of Sum of Digits = 0
+//Test Case 5: Square of Sum of Digits = 2025
+
+
+//******************************************************---****************************************************************
+
+//  9. Problem Description: Check if a Number is a Perfect Square
+
+//You are tasked with creating a Java program to determine whether a given number is a perfect square.
+// The program should efficiently check and return true if the number is a perfect square, and false otherwise.
+
+//Input:
+//    num: A non-negative integer.
+
+//Output:
+//    Returns true if the number is a perfect square, and false otherwise.
+
+// Example 1
+//boolean result1 = isPerfectSquare(16);
+// Output: true (16 is a perfect square, as 4 * 4 = 16)
+
+// Example 2
+//boolean result2 = isPerfectSquare(25);
+// Output: true (25 is a perfect square, as 5 * 5 = 25)
+
+// Example 3
+//boolean result3 = isPerfectSquare(14);
+// Output: false (14 is not a perfect square)
+
+//Notes:
+//    The solution should efficiently check whether the given number is a perfect square.
+//    The function should handle non-negative integers as input.
+//    The program should run without errors for valid input numbers.
+
+class PerfectSquareCheck {
+
+    public static boolean isPerfectSquare(int num) {
+        if (num < 0) {
+            throw new IllegalArgumentException("Input should be a non-negative integer.");
+        }
+
+        int sqrtRoot = 0;
+
+        while (sqrtRoot * sqrtRoot <= num) {
+            if (sqrtRoot * sqrtRoot == num) {
+                return true; // Found a perfect square
+            }
+            sqrtRoot++;
+        }
+
+        return false; // No perfect square found
+    }
+
+    public static void main(String[] args) {
+        // Test Case 1
+        int input1 = 16;
+        boolean result1 = isPerfectSquare(input1);
+        System.out.println("Test Case 1: Is Perfect Square? " + result1);
+
+        // Test Case 2
+        int input2 = 25;
+        boolean result2 = isPerfectSquare(input2);
+        System.out.println("Test Case 2: Is Perfect Square? " + result2);
+
+        // Test Case 3
+        int input3 = 14;
+        boolean result3 = isPerfectSquare(input3);
+        System.out.println("Test Case 3: Is Perfect Square? " + result3);
+
+        // Test Case 4
+        int input4 = 0;
+        boolean result4 = isPerfectSquare(input4);
+        System.out.println("Test Case 4: Is Perfect Square? " + result4);
+
+        // Test Case 5
+        int input5 = 100;
+        boolean result5 = isPerfectSquare(input5);
+        System.out.println("Test Case 5: Is Perfect Square? " + result5);
+    }
+}
+
+//Sample Output:
+// Test Case 1: Is Perfect Square? true
+//Test Case 2: Is Perfect Square? true
+//Test Case 3: Is Perfect Square? false
+//Test Case 4: Is Perfect Square? true
+//Test Case 5: Is Perfect Square? true
 
 //******************************************************---****************************************************************
 
@@ -1273,65 +1323,86 @@ class LeapYearChecker {
 //Is 1600 a leap year? true
 
 //******************************************************---****************************************************************
-// 15. Sum of Digits
+// 15. Problem Description: Check if a String Starts with a Specific Prefix
 
-//You are tasked with creating a Java program to calculate the sum of digits of a given integer number.
+//You are tasked with creating a Java program to check if a given string starts with a specific prefix.
+// The program should efficiently determine and return true if the string begins with the specified prefix, and false otherwise.//
 
 //Input:
-//    number: An integer representing the number whose digits' sum needs to be calculated.
+//    str: A string.
+//    prefix: The prefix to check.
 
 //Output:
-//    Returns an integer representing the sum of digits of the input number.
+//    Returns true if the string starts with the specified prefix, and false otherwise.
 
-//// Example 1
-//Input: number = 123
-//Output: 6
-//Explanation: The sum of digits of the number 123 is 1 + 2 + 3 = 6.
+// Example 1
+//boolean result1 = startsWithPrefix("Hello, World!", "Hello");
+// Output: true ("Hello, World!" starts with the prefix "Hello")
 
-//// Example 2
-//Input: number = 9876
-//Output: 30
-//Explanation: The sum of digits of the number 9876 is 9 + 8 + 7 + 6 = 30.
+// Example 2
+//boolean result2 = startsWithPrefix("Java Programming", "Python");
+// Output: false ("Java Programming" does not start with the prefix "Python")
 
-//// Example 3
-//Input: number = 5
-//Output: 5
-//Explanation: The sum of digits of the number 5 is 5.
+// Example 3
+//boolean result3 = startsWithPrefix("12345", "12");
+// Output: true ("12345" starts with the prefix "12")
 
 //Notes:
-//    The input number may be positive or negative.
-//    The sum of digits should be calculated for the absolute value of the number.
-//    The calculated sum should be returned as an integer.
+//    The solution should efficiently check whether the given string starts with the specified prefix.
+//    The function should handle cases where the string or prefix may be empty.
+//    The program should run without errors for valid input strings and prefixes.
 
-class SumOfDigits {
+class PrefixCheck {
 
-    public static int sumOfDigits(int number) {
-        // Take absolute value to handle negative numbers
-        number = Math.abs(number);
-        int sum = 0;
-        while (number > 0) {
-            sum += number % 10; // Add the last digit to the sum
-            number /= 10; // Remove the last digit
+    public static boolean startsWithPrefix(String str, String prefix) {
+        if (str == null || prefix == null) {
+            throw new IllegalArgumentException("Input strings cannot be null.");
         }
-        return sum;
+
+        int prefixLength = prefix.length();
+
+        if (prefixLength > str.length()) {
+            return false; // Prefix is longer than the string, cannot be a match
+        }
+
+        for (int i = 0; i < prefixLength; i++) {
+            if (str.charAt(i) != prefix.charAt(i)) {
+                return false; // Mismatch at current position
+            }
+        }
+
+        return true; // Prefix matches the start of the string
     }
 
     public static void main(String[] args) {
-        // Test Cases
-        int[] numbers = {123, 9876, 5, -456, 0};
-        for (int number : numbers) {
-            System.out.println("Sum of digits for " + number + ": " + sumOfDigits(number));
-        }
+        // Test Case 1
+        boolean result1 = startsWithPrefix("Hello, World!", "Hello");
+        System.out.println("Test Case 1: Starts with Prefix? " + result1);
+
+        // Test Case 2
+        boolean result2 = startsWithPrefix("Java Programming", "Python");
+        System.out.println("Test Case 2: Starts with Prefix? " + result2);
+
+        // Test Case 3
+        boolean result3 = startsWithPrefix("12345", "12");
+        System.out.println("Test Case 3: Starts with Prefix? " + result3);
+
+        // Test Case 4
+        boolean result4 = startsWithPrefix("Java", "Java");
+        System.out.println("Test Case 4: Starts with Prefix? " + result4);
+
+        // Test Case 5
+        boolean result5 = startsWithPrefix("", "Prefix");
+        System.out.println("Test Case 5: Starts with Prefix? " + result5);
     }
 }
 
-// sample output:
-// Sum of digits for 123: 6
-//Sum of digits for 9876: 30
-//Sum of digits for 5: 5
-//Sum of digits for -456: 15
-//Sum of digits for 0: 0
-
+//Sample Output:
+// Test Case 1: Starts with Prefix? true
+//Test Case 2: Starts with Prefix? false
+//Test Case 3: Starts with Prefix? true
+//Test Case 4: Starts with Prefix? true
+//Test Case 5: Starts with Prefix? false
 
 //******************************************************---****************************************************************
 // 16. Pairs with Sum
@@ -1594,7 +1665,296 @@ class Factors {
 
 
 //******************************************************---****************************************************************
-// 19.
+
+//  19. Problem Description: Sum of Prime Numbers up to a Given Limit
+//
+//You are tasked with creating a Java program to find the sum of prime numbers up to a given limit.
+// The program should efficiently determine and return the sum of all prime numbers within the specified range.
+
+//public static int sumOfPrimes(int limit)
+//
+//Input:
+//    limit: An integer representing the upper limit of the range.
+
+//Output:
+//    Returns the sum of prime numbers up to the given limit.
+
+// Example
+//int result = sumOfPrimes(10);
+// Output: 17 (2 + 3 + 5 + 7 are prime numbers up to the limit 10)
+
+//Notes:
+//    The solution should efficiently find and return the sum of prime numbers up to the specified limit.
+//    The function should handle non-negative integer inputs.
+//    The program should run without errors for valid input limits.
+
+class SumOfPrimes {
+
+    public static int sumOfPrimes(int limit) {
+        if (limit < 0) {
+            throw new IllegalArgumentException("Limit should be a non-negative integer.");
+        }
+
+        int sum = 0;
+
+        for (int i = 2; i <= limit; i++) {
+            if (isPrime(i)) {
+                sum += i;
+            }
+        }
+
+        return sum;
+    }
+
+    private static boolean isPrime(int num) {
+        if (num < 2) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false; // Not a prime number
+            }
+        }
+
+        return true; // Prime number
+    }
+
+    public static void main(String[] args) {
+        // Test Case 1
+        int result1 = sumOfPrimes(10);
+        System.out.println("Test Case 1: Sum of Primes = " + result1);
+
+        // Test Case 2
+        int result2 = sumOfPrimes(20);
+        System.out.println("Test Case 2: Sum of Primes = " + result2);
+
+        // Test Case 3
+        int result3 = sumOfPrimes(5);
+        System.out.println("Test Case 3: Sum of Primes = " + result3);
+
+        // Test Case 4
+        int result4 = sumOfPrimes(0);
+        System.out.println("Test Case 4: Sum of Primes = " + result4);
+
+        // Test Case 5
+        int result5 = sumOfPrimes(30);
+        System.out.println("Test Case 5: Sum of Primes = " + result5);
+    }
+}
+
+
+//Sample Output:
+// Test Case 1: Sum of Primes = 17
+//Test Case 2: Sum of Primes = 77
+//Test Case 3: Sum of Primes = 10
+//Test Case 4: Sum of Primes = 0
+//Test Case 5: Sum of Primes = 129
+
 
 //******************************************************---****************************************************************
-// 20.
+
+//  20. Problem Description: Find the Kth Largest Element in an Array
+
+//You are tasked with creating a Java program to find the Kth largest element in an array.
+// The program should efficiently determine and return the Kth largest element from the given array.
+
+//Input:
+//    nums: An array of integers.
+//    k: An integer representing the position of the Kth largest element (1 <= k <= length of the array).
+
+//Output:
+//    Returns the Kth largest element from the array.
+
+// Example
+//int[] arr = {3, 1, 5, 7, 2, 4, 6};
+//int k = 3;
+//int result = findKthLargest(arr, k);
+// Output: 5 (The 3rd largest element in the array is 5)
+
+//Notes:
+//    The solution should efficiently find and return the Kth largest element from the array.
+//    The function should handle valid positions for K within the range of the array length.
+//    The program should run without errors for valid input arrays and positions.
+
+//import java.util.Arrays;
+class KthLargestElement { // import Arrays
+
+    public static int findKthLargest(int[] nums, int k) {
+        if (nums == null || k <= 0 || k > nums.length) {
+            throw new IllegalArgumentException("Invalid input parameters.");
+        }
+
+        Arrays.sort(nums);
+        return nums[nums.length - k];
+    }
+
+    public static void main(String[] args) {
+        // Test Case 1
+        int[] arr1 = {3, 1, 5, 7, 2, 4, 6};
+        int k1 = 3;
+        int result1 = findKthLargest(arr1, k1);
+        System.out.println("Test Case 1: Kth Largest Element = " + result1);
+
+        // Test Case 2
+        int[] arr2 = {10, 20, 30, 40, 50};
+        int k2 = 1;
+        int result2 = findKthLargest(arr2, k2);
+        System.out.println("Test Case 2: Kth Largest Element = " + result2);
+
+        // Test Case 3
+        int[] arr3 = {7};
+        int k3 = 1;
+        int result3 = findKthLargest(arr3, k3);
+        System.out.println("Test Case 3: Kth Largest Element = " + result3);
+
+        // Test Case 4
+        int[] arr4 = {5, 5, 5, 5, 5};
+        int k4 = 2;
+        int result4 = findKthLargest(arr4, k4);
+        System.out.println("Test Case 4: Kth Largest Element = " + result4);
+
+        // Test Case 5
+        int[] arr5 = {1, 2, 3, 4, 5};
+        int k5 = 5;
+        int result5 = findKthLargest(arr5, k5);
+        System.out.println("Test Case 5: Kth Largest Element = " + result5);
+    }
+}
+
+//Sample Output:
+// Test Case 1: Kth Largest Element = 5
+//Test Case 2: Kth Largest Element = 50
+//Test Case 3: Kth Largest Element = 7
+//Test Case 4: Kth Largest Element = 5
+//Test Case 5: Kth Largest Element = 1
+
+
+//******************************************************---****************************************************************
+
+//  21. Problem Description: Single Number
+
+//You are tasked with creating a Java program to find the single number in an array where every element appears twice except for one.
+// Your solution must have linear runtime complexity and use only constant extra space.
+
+//Input:
+//    nums: A non-empty array of integers where every element appears twice except for one.
+
+//Output:
+//    Returns the single number that appears only once in the array.
+
+// Example
+//int[] arr = {4, 2, 7, 2, 4};
+//int result = findSingleNumber(arr);
+// Output: 7 (7 is the only element that appears once in the array)
+
+//Notes:
+//    The solution should have linear runtime complexity O(n) and use only constant extra space O(1).
+//    The array will always contain an odd number of elements.
+//    The program should run without errors for valid input arrays.
+
+class SingleNumber {
+
+    public static int findSingleNumber(int[] nums) {
+        if (nums == null || nums.length % 2 == 0) {
+            throw new IllegalArgumentException("Invalid input array.");
+        }
+
+        int result = 0;
+
+        for (int num : nums) {
+            result ^= num; // Using XOR operation to find the single number
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        // Test Case 1
+        int[] arr1 = {4, 2, 7, 2, 4};
+        int result1 = findSingleNumber(arr1);
+        System.out.println("Test Case 1: Single Number = " + result1);
+
+        // Test Case 2
+        int[] arr2 = {1, 2, 3, 1, 3};
+        int result2 = findSingleNumber(arr2);
+        System.out.println("Test Case 2: Single Number = " + result2);
+
+        // Test Case 3
+        int[] arr3 = {5, 6, 6};
+        int result3 = findSingleNumber(arr3);
+        System.out.println("Test Case 3: Single Number = " + result3);
+    }
+}
+
+//Sample Output:
+// Test Case 1: Single Number = 7
+//Test Case 2: Single Number = 2
+//Test Case 3: Single Number = 5
+
+//******************************************************---****************************************************************
+
+//  22. Problem Description: Missing Number
+
+//You are tasked with creating a Java program to find the missing number in an array.
+// Given an array nums containing n distinct numbers in the range [0, n],
+// the program should efficiently determine and return the only number in the range that is missing from the array.
+
+//Input:
+//    nums: An array of distinct integers in the range [0, n], where n is the length of the array.
+
+//Output:
+//    Returns the missing number from the array.
+
+// Example
+//int[] arr = {3, 0, 1};
+//int result = findMissingNumber(arr);
+// Output: 2 (The missing number in the array is 2)
+
+//Notes:
+//    The solution should efficiently find and return the missing number in the array.
+//    The array will always contain n distinct numbers in the range [0, n], where n is the length of the array.
+//    The program should run without errors for valid input arrays.
+
+class MissingNumber {
+
+    public static int findMissingNumber(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("Invalid input array.");
+        }
+
+        int n = nums.length;
+        int expectedSum = n * (n + 1) / 2;
+        int actualSum = 0;
+
+        for (int num : nums) {
+            actualSum += num;
+        }
+
+        return expectedSum - actualSum;
+    }
+
+    public static void main(String[] args) {
+        // Test Case 1
+        int[] arr1 = {3, 0, 1};
+        int result1 = findMissingNumber(arr1);
+        System.out.println("Test Case 1: Missing Number = " + result1);
+
+        // Test Case 2
+        int[] arr2 = {9, 6, 4, 2, 3, 5, 7, 0, 1};
+        int result2 = findMissingNumber(arr2);
+        System.out.println("Test Case 2: Missing Number = " + result2);
+
+        // Test Case 3
+        int[] arr3 = {1};
+        int result3 = findMissingNumber(arr3);
+        System.out.println("Test Case 3: Missing Number = " + result3);
+    }
+}
+
+//Sample Output:
+// Test Case 1: Missing Number = 2
+//Test Case 2: Missing Number = 8
+//Test Case 3: Missing Number = 0
+
+//******************************************************---****************************************************************
